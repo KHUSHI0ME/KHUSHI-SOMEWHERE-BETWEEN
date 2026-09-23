@@ -6,6 +6,33 @@ const mainSite = document.getElementById("main-site");
 
 
 /* =========================
+   VIEWPORT FIT
+========================= */
+
+function updateViewportSize() {
+
+    const viewport = window.visualViewport;
+
+    const height = viewport ? viewport.height : window.innerHeight;
+
+    document.documentElement.style.setProperty(
+        "--viewport-height",
+        `${height}px`
+    );
+
+}
+
+
+updateViewportSize();
+
+window.addEventListener("resize", updateViewportSize);
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", updateViewportSize);
+}
+
+
+/* =========================
    ENTER WEBSITE
 ========================= */
 

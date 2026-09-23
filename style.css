@@ -7752,3 +7752,353 @@ p {
 .rooms {
     border-top: 1px solid rgba(155, 119, 119, 0.15);
 }
+
+/* =========================
+   RESPONSIVE FIT
+========================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+:root {
+    --viewport-height: 100dvh;
+}
+
+body,
+#main-site,
+#loading-screen,
+.hero {
+    min-height: var(--viewport-height);
+}
+
+#loading-screen,
+#logic-screen,
+#creative-screen,
+#experiment-screen,
+#other-screen,
+#project-screen,
+#design-practice-screen,
+#uiux-screen,
+#personal-ui-case {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+button,
+a {
+    max-width: 100%;
+}
+
+@media (max-width: 1100px) {
+    .hero,
+    .rooms,
+    .logic-content,
+    .creative-content,
+    .experiment-content,
+    .other-content {
+        padding-left: clamp(24px, 6vw, 8%);
+        padding-right: clamp(24px, 6vw, 8%);
+    }
+
+    .project-showcase {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 0.7fr);
+        gap: clamp(30px, 5vw, 80px);
+    }
+
+    .practice-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    nav {
+        padding: 16px 6%;
+    }
+
+    #loading-screen {
+        padding: 24px;
+    }
+
+    .terminal {
+        width: 100%;
+        padding: 0;
+    }
+
+    .terminal h1 {
+        font-size: clamp(44px, 14vw, 70px);
+        letter-spacing: -2px;
+    }
+
+    .loading-lines {
+        font-size: clamp(10px, 2.8vw, 12px);
+        line-height: 1.8;
+    }
+
+    #enter-btn {
+        margin-top: 28px;
+        padding: 13px 20px;
+    }
+
+    .hero {
+        min-height: var(--viewport-height);
+        height: auto;
+        padding: 96px 6% 48px;
+    }
+
+    .hero h2 {
+        font-size: clamp(38px, 12vw, 64px);
+        overflow-wrap: anywhere;
+    }
+
+    .description {
+        max-width: 100%;
+        margin-top: 26px;
+    }
+
+    .explore {
+        margin-top: 36px;
+    }
+
+    .rooms {
+        min-height: 0;
+        padding: 20px 6% 56px;
+        gap: 16px;
+    }
+
+    .universe-title {
+        padding: 56px 0 24px;
+    }
+
+    .room {
+        min-height: 210px;
+        padding: 24px;
+    }
+
+    .room h3 {
+        margin-top: 50px;
+        font-size: clamp(25px, 8vw, 34px);
+        overflow-wrap: anywhere;
+    }
+
+    .logic-content,
+    .creative-content,
+    .experiment-content,
+    .other-content,
+    .project-screen-content,
+    .practice-content,
+    .uiux-content {
+        min-height: 0;
+        padding: 96px 6% 64px;
+    }
+
+    .logic-content h2,
+    .creative-content h2,
+    .experiment-content h2,
+    .other-content h2,
+    .project-heading h2,
+    .practice-heading h2,
+    .uiux-header h2 {
+        font-size: clamp(42px, 13vw, 76px);
+        letter-spacing: -3px;
+        overflow-wrap: anywhere;
+    }
+
+    .logic-description,
+    .creative-description,
+    .experiment-description,
+    .other-intro,
+    .practice-intro,
+    .uiux-intro {
+        max-width: 100%;
+        margin-top: 28px;
+    }
+
+    .journey {
+        margin-top: 72px;
+    }
+
+    .journey-item {
+        grid-template-columns: 48px 20px minmax(0, 1fr);
+    }
+
+    .journey-content {
+        padding-left: 18px;
+        padding-bottom: 42px;
+    }
+
+    .journey-content h3,
+    .creative-card h3,
+    .journal-card h4 {
+        font-size: clamp(19px, 6vw, 26px);
+        overflow-wrap: anywhere;
+    }
+
+    .creative-grid,
+    .practice-gallery,
+    .journal-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 64px;
+    }
+
+    .creative-card {
+        min-height: 0;
+    }
+
+    .project-image {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .experiment-console {
+        margin-top: 64px;
+    }
+
+    .experiment-item {
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 12px;
+        padding: 22px 16px;
+    }
+
+    .experiment-status {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .coffee-section {
+        margin-top: 96px;
+        padding: 36px 0;
+    }
+
+    .thought-section,
+    .fragment-section,
+    .journal-section {
+        margin-top: 96px;
+    }
+
+    .uiux-process {
+        grid-template-columns: 1fr;
+        margin-top: 80px;
+    }
+
+    .uiux-process::before {
+        display: none;
+    }
+
+    .process-step {
+        min-height: 0;
+        padding: 24px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .process-step:last-child {
+        border-bottom: 0;
+    }
+
+    .process-step h3 {
+        margin-top: 36px;
+        font-size: clamp(24px, 8vw, 32px);
+    }
+
+    .uiux-tools,
+    .uiux-ending {
+        margin-top: 96px;
+    }
+
+    .project-showcase {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-top: 64px;
+    }
+
+    .full-poster {
+        padding: 12px;
+    }
+
+    #close-logic,
+    #close-creative,
+    #close-experiment,
+    #close-other,
+    #close-project,
+    #close-design-practice,
+    #close-uiux {
+        top: 16px;
+        left: 6%;
+        padding: 10px 14px;
+        font-size: 9px;
+    }
+}
+
+@media (max-height: 820px) and (min-width: 701px) {
+    .hero {
+        min-height: 100svh;
+        padding-top: clamp(78px, 12vh, 110px);
+        padding-bottom: clamp(30px, 7vh, 60px);
+    }
+
+    .hero h2 {
+        font-size: clamp(48px, min(8vw, 12vh), 110px);
+    }
+
+    .hero .description {
+        margin-top: clamp(18px, 3vh, 24px);
+    }
+
+    .explore {
+        margin-top: clamp(22px, 4vh, 32px);
+    }
+
+    .rooms {
+        padding-top: clamp(48px, 8vh, 100px);
+        padding-bottom: clamp(48px, 8vh, 100px);
+        gap: clamp(16px, 2vh, 24px);
+    }
+
+    .universe-title {
+        padding-top: clamp(54px, 9vh, 110px);
+        padding-bottom: clamp(24px, 5vh, 55px);
+    }
+
+    .room {
+        min-height: clamp(220px, 38vh, 320px);
+        padding: clamp(24px, 4vh, 42px);
+    }
+
+    .room h3 {
+        margin-top: clamp(54px, 11vh, 90px);
+    }
+}
+
+@media (max-height: 700px) and (max-width: 700px) {
+    .rooms {
+        padding-top: 12px;
+        padding-bottom: 40px;
+    }
+
+    .universe-title {
+        padding-top: 42px;
+        padding-bottom: 20px;
+    }
+
+    .room {
+        min-height: 190px;
+        padding: 20px;
+    }
+
+    .room h3 {
+        margin-top: 40px;
+    }
+}
