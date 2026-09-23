@@ -6,57 +6,23 @@ const mainSite = document.getElementById("main-site");
 
 
 /* =========================
-   SCREEN DETECT & AUTO-FIT
+   VIEWPORT FIT
 ========================= */
 
 function updateViewportSize() {
 
-    const vp = window.visualViewport;
+    const viewport = window.visualViewport;
 
-    const W = vp ? vp.width  : window.innerWidth;
-    const H = vp ? vp.height : window.innerHeight;
+    const height = viewport ? viewport.height : window.innerHeight;
 
-    const dpr = window.devicePixelRatio || 1;
+    document.documentElement.style.setProperty(
+        "--viewport-height",
+        `${height}px`
+    );
 
-    const root = document.documentElement;
-
-    /* -- core size vars -- */
-    root.style.setProperty("--viewport-width",  `${W}px`);
-    root.style.setProperty("--viewport-height", `${H}px`);
-
-    /* -- device class on <html> -- */
-    root.classList.remove("device-mobile", "device-tablet", "device-desktop", "device-wide");
-
-    if      (W <= 480)  root.classList.add("device-mobile");
-    else if (W <= 900)  root.classList.add("device-tablet");
-    else if (W <= 1400) root.classList.add("device-desktop");
-    else                root.classList.add("device-wide");
-
-    /* -- high-dpi flag -- */
-    if (dpr >= 2) root.classList.add("hi-dpi");
-    else          root.classList.remove("hi-dpi");
-
-    /*
-     * --scale: a 0-1 multiplier derived from viewport width so that
-     * padding, font-sizes and gaps all shrink/grow proportionally.
-     * Clamped between 0.7 (very small screens) and 1.15 (very wide).
-     */
-    const scale = Math.min(1.15, Math.max(0.7, W / 1280));
-    root.style.setProperty("--scale", scale.toFixed(4));
-
-    /* -- fluid section padding based on height -- */
-    const vPad = Math.max(48, Math.min(140, H * 0.12));
-    root.style.setProperty("--section-pad-v", `${vPad}px`);
-
-    /* -- nav height so hero never hides under it -- */
-    const nav = document.querySelector("nav");
-    if (nav) {
-        root.style.setProperty("--nav-h", `${nav.offsetHeight}px`);
-    }
 }
 
 
-/* Run immediately, on resize, and on visualViewport resize (mobile keyboards) */
 updateViewportSize();
 
 window.addEventListener("resize", updateViewportSize);
@@ -64,9 +30,6 @@ window.addEventListener("resize", updateViewportSize);
 if (window.visualViewport) {
     window.visualViewport.addEventListener("resize", updateViewportSize);
 }
-
-/* Also run after fonts/images load in case layout shifted */
-window.addEventListener("load", updateViewportSize);
 
 
 /* =========================

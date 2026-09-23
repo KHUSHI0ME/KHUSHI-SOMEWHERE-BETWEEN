@@ -7767,19 +7767,9 @@ p {
 }
 
 /* =========================
-   SCREEN AUTO-FIT SYSTEM
+   RESPONSIVE FIT
 ========================= */
 
-/* --- Base defaults (JS overrides at runtime) --- */
-:root {
-    --viewport-width:   100vw;
-    --viewport-height:  100dvh;
-    --scale:            1;
-    --section-pad-v:    100px;
-    --nav-h:            70px;
-}
-
-/* --- Global containment: NO element can cause overflow --- */
 html,
 body {
     width: 100%;
@@ -7787,46 +7777,17 @@ body {
     overflow-x: hidden;
 }
 
-* {
-    min-width: 0;
-    min-height: 0;
+:root {
+    --viewport-height: 100dvh;
 }
 
-/* All sections fill exactly the viewport height — no extra scroll */
+body,
+#main-site,
 #loading-screen,
 .hero {
-    height: var(--viewport-height);
-    min-height: var(--viewport-height);
-    max-height: var(--viewport-height);
-    overflow: hidden;
-}
-
-#main-site {
     min-height: var(--viewport-height);
 }
 
-/* Safe hero content area: never hidden behind nav, never cuts off bottom */
-.hero {
-    padding-top: calc(var(--nav-h) + clamp(24px, 6vh, 60px));
-    padding-bottom: clamp(32px, 6vh, 60px);
-}
-
-/* Media elements never overflow their containers */
-img,
-video,
-canvas,
-svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-button,
-a {
-    max-width: 100%;
-}
-
-/* Full-width overlay screens */
 #loading-screen,
 #logic-screen,
 #creative-screen,
@@ -7841,94 +7802,17 @@ a {
     min-width: 0;
 }
 
-
-/* ======================================================
-   DEVICE CLASS OVERRIDES  (set by JS on <html>)
-====================================================== */
-
-/* ---- MOBILE  (≤480px) ---- */
-html.device-mobile .hero {
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-html.device-mobile .hero h2 {
-    font-size: clamp(36px, 13vw, 58px);
-    letter-spacing: -2px;
-    line-height: 0.92;
-}
-
-html.device-mobile .description {
-    font-size: 12px;
-    margin-top: 24px;
+img,
+video,
+canvas,
+svg {
     max-width: 100%;
 }
 
-html.device-mobile .explore {
-    margin-top: 28px;
+button,
+a {
+    max-width: 100%;
 }
-
-html.device-mobile .rooms {
-    grid-template-columns: 1fr;
-    padding-top: 48px;
-    padding-bottom: 48px;
-    gap: 16px;
-}
-
-
-/* ---- TABLET  (481–900px) ---- */
-html.device-tablet .hero {
-    padding-left: 6%;
-    padding-right: 6%;
-}
-
-html.device-tablet .hero h2 {
-    font-size: clamp(44px, 9vw, 80px);
-}
-
-html.device-tablet .rooms {
-    grid-template-columns: 1fr 1fr;
-    padding-top: 64px;
-    padding-bottom: 64px;
-    gap: 18px;
-}
-
-
-/* ---- DESKTOP  (901–1400px) ---- */
-html.device-desktop .hero {
-    padding-left: 8%;
-    padding-right: 8%;
-}
-
-html.device-desktop .rooms {
-    padding-top: var(--section-pad-v);
-    padding-bottom: var(--section-pad-v);
-}
-
-
-/* ---- WIDE (>1400px / large monitors / 4K) ---- */
-html.device-wide .hero {
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-html.device-wide .hero h2 {
-    font-size: clamp(80px, 7vw, 130px);
-}
-
-html.device-wide .rooms {
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: var(--section-pad-v);
-    padding-bottom: var(--section-pad-v);
-}
-
-html.device-wide .room {
-    min-height: 380px;
-    padding: 52px;
-}
-
-
 
 @media (max-width: 1100px) {
     .hero,
